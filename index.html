@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Verification AI Dataset</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --primary-color: #3498db;
+            --secondary-color: #f8f9fa;
+            --accent-color: #2980b9;
+            --card-bg: #ffffff;
+        }
+        
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --primary-color: #5dade2;
+            --secondary-color: #2c3e50;
+            --accent-color: #7fb3d5;
+            --card-bg: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        h2 {
+            color: var(--accent-color);
+            margin-top: 30px;
+        }
+        
+        code {
+            background-color: var(--secondary-color);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        .file-structure {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        .toggle-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 15px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        form {
+            margin-top: 20px;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Insurance Verification AI Dataset
+        <div class="toggle-container">
+            Dark Mode
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </h1>
+    
+    <p>Template repository for synthetic insurance call data to train AI agents.</p>
+    
+    <a href="https://github.com/JSoul13/insurance-verification-ai" class="button">View on GitHub</a>
+    
+    <div class="grid">
+        <div class="card">
+            <h2>Dataset Statistics</h2>
+            <div class="chart-container">
+                <canvas id="dataChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Intent Distribution</h2>
+            <div class="chart-container">
+                <canvas id="intentChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2>Repository Structure</h2>
+        <div class="file-structure">
+            insurance-verification-ai/<br>
+            ├── <strong>data/</strong><br>
+            │   ├── raw_transcripts.json<br>
+            │   └── labeled_intents_entities.json<br>
+            ├── <strong>scripts/</strong><br>
+            │   └── load_data.py<br>
+            └── README.md
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Submit New Data</h2>
+        <form id="dataForm">
+            <label for="caller">Caller Type:</label>
+            <select id="caller" required>
+                <option value="Provider">Provider</option>
+                <option value="Patient">Patient</option>
+                <option value="Biller">Biller</option>
+            </select>
+            
+            <label for="transcript">Call Transcript:</label>
+            <textarea id="transcript" rows="3" required></textarea>
+            
+            <label for="response">Insurer Response:</label>
+            <textarea id="response" rows="3" required></textarea>
+            
+            <label for="intent">Primary Intent:</label>
+            <input type="text" id="intent" required>
+            
+            <button type="submit">Add to Dataset</button>
+        </form>
+    </div>
+    
+    <div class="card">
+        <h2>Sample Data Files</h2>
+        
+        <h3>1. Raw Call Transcripts (data/raw_transcripts.json)</h3>
+        <pre><code>[
+  {
+    "caller": "Provider",
+    "transcript": "Hi, I'm calling to verify benefits for patient John Doe, DOB 01/01/1990.",
+    "insurer_response": "Coverage is active. Deductible $500 with $200 met."
+  }
+]</code></pre>
+        
+        <h3>2. Labeled NLP Data (data/labeled_intents_entities.json)</h3>
+        <pre><code>[
+  {
+    "text": "Coverage is active. Deductible $500 with $200 met.",
+    "intent": "verify_benefits",
+    "entities": [
+      {"entity": "@coverage_status", "value": "active", "start": 0, "end": 6},
+      {"entity": "@deductible_total", "value": "$500", "start": 25, "end": 29}
+    ]
+  }
+]</code></pre>
+    </div>
+
+    <div class="card">
+        <h2>Getting Started</h2>
+        <h3>Clone the Repository</h3>
+        <pre><code>git clone https://github.com/JSoul13/insurance-verification-ai.git
+cd insurance-verification-ai</code></pre>
+        
+        <h3>Run the Sample Script</h3>
+        <pre><code>python scripts/load_data.py</code></pre>
+        <p>Output should show: <code>First example: Coverage is active...</code></p>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode', this.checked);
+            localStorage.setItem('darkMode', this.checked);
+        });
+        
+        // Check for saved user preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        }
+        
+        // Sample Charts
+        const dataCtx = document.getElementById('dataChart').getContext('2d');
+        const intentCtx = document.getElementById('intentChart').getContext('2d');
+        
+        new Chart(dataCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Call Transcripts', 'Labeled Intents', 'Entities'],
+                datasets: [{
+                    label: 'Dataset Items',
+                    data: [42, 35, 128],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(155, 89, 182, 0.7)',
+                        'rgba(46, 204, 113, 0.7)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        
+        new Chart(intentCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Verify Benefits', 'Check Deductible', 'Request Auth', 'Denial Handling'],
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: [
+                        'rgba(52, 152, 219, 0.7)',
+                        'rgba(241, 196, 15, 0.7)',
+                        'rgba(46, 204, 113, 0.7)',
+                        'rgba(231, 76, 60, 0.7)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+        
+        // Form Submission
+        document.getElementById('dataForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newEntry = {
+                caller: document.getElementById('caller').value,
+                transcript: document.getElementById('transcript').value,
+                response: document.getElementById('response').value,
+                intent: document.getElementById('intent').value
+            };
+            
+            alert(`New entry added:\n\nCaller: ${newEntry.caller}\nIntent: ${newEntry.intent}\n\n(Note: This demo would connect to your backend in production)`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
