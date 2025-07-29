@@ -1,380 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insurance Verification AI Dataset</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --primary-color: #3498db;
-            --secondary-color: #f8f9fa;
-            --accent-color: #2980b9;
-            --card-bg: #ffffff;
-        }
-        
-        .dark-mode {
-            --bg-color: #1a1a1a;
-            --text-color: #f0f0f0;
-            --primary-color: #5dade2;
-            --secondary-color: #2c3e50;
-            --accent-color: #7fb3d5;
-            --card-bg: #2c3e50;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            transition: all 0.3s ease;
-        }
-        
-        h1 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        h2 {
-            color: var(--accent-color);
-            margin-top: 30px;
-        }
-        
-        code {
-            background-color: var(--secondary-color);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-        }
-        
-        pre {
-            background-color: var(--secondary-color);
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        
-        .file-structure {
-            background-color: var(--secondary-color);
-            padding: 15px;
-            border-radius: 5px;
-            font-family: monospace;
-            margin: 15px 0;
-        }
-        
-        .button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 10px 0;
-            transition: background-color 0.3s;
-        }
-        
-        .button:hover {
-            background-color: var(--accent-color);
-        }
-        
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .chart-container {
-            position: relative;
-            height: 300px;
-            margin: 20px 0;
-        }
-        
-        .toggle-container {
-            display: flex;
-            align-items: center;
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-            margin-left: 15px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: var(--accent-color);
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        
-        form {
-            margin-top: 20px;
-        }
-        
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-        }
-        
-        button[type="submit"] {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        button[type="submit"]:hover {
-            background-color: var(--accent-color);
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JI Innovations - Custom AI Agents for Healthcare & Beyond</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e1e5e9;
+            background: #0f1419;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMEYxNDE5Ii8+CjxwYXRoIGQ9Ik01MCA1MEg5MFY5MEg1MFY1MFoiIGZpbGw9IiMyNTZBQzgiLz4KPHA+dGggZD0iTTUwIDUwSDkwVjkwSDUwVjUwWiIgZmlsbD0iIzI1NkFDOCIvPgo8cGF0aCBkPSJNMTEwIDUwSDE1MFY5MEgxMTBWNTBaIiBmaWxsPSIjMjU2QUM4Ii8+CjxwYXRoIGQ9Ik01MCAyMEg5MFY2MEg1MFYyMFoiIGZpbGw9IiNGRkI4MDAiLz4KPHA+dGggZD0iTTExMCAyMEgxNTBWNjBIMTEwVjIwWiIgZmlsbD0iI0ZGQjgwMCIvPgo8L3N2Zz4K') center/contain no-repeat;
+            filter: drop-shadow(0 0 10px rgba(37, 106, 200, 0.3));
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            background: linear-gradient(135deg, #256AC8, #FFB800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e1e5e9;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: rgba(37, 106, 200, 0.1);
+            color: #256AC8;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f1419 0%, #1a2734 50%, #0f1419 100%);
+            color: #ffffff;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(37, 106, 200, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 184, 0, 0.1) 0%, transparent 50%);
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(135deg, #ffffff, #256AC8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s both;
+            color: #b0bec5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #256AC8, #FFB800);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 10px 30px rgba(37, 106, 200, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 106, 200, 0.4);
+            background: linear-gradient(135deg, #1e5aa0, #e6a600);
+        }
+
+        .section {
+            padding: 80px 0;
+            background: #0f1419;
+            margin: 0;
+        }
+
+        .section:nth-child(even) {
+            background: #1a2734;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #256AC8, #FFB800);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: rgba(26, 39, 52, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(37, 106, 200, 0.2);
+            border-color: rgba(37, 106, 200, 0.3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #256AC8, #FFB800);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 106, 200, 0.3);
+        }
+
+        .service-card h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #b0bec5;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(26, 39, 52, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(37, 106, 200, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #256AC8, #FFB800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-item h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            color: #b0bec5;
+        }
+
+        .ai-agents-info {
+            background: linear-gradient(135deg, #1a2734, #0f1419);
+            color: white;
+            padding: 80px 0;
+            margin: 0;
+            position: relative;
+        }
+
+        .ai-agents-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 106, 200, 0.1) 0%, transparent 70%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 184, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .ai-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-info-card {
+            background: rgba(26, 39, 52, 0.4);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .ai-info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(37, 106, 200, 0.3);
+            box-shadow: 0 10px 30px rgba(37, 106, 200, 0.1);
+        }
+
+        .ai-info-card h3 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        .ai-info-card p {
+            color: #b0bec5;
+        }
+
+        .dashboard-section {
+            background: #0f1419;
+            padding: 80px 0;
+        }
+
+        .dashboard-preview {
+            background: rgba(26, 39, 52, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(37, 106, 200, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(37, 106, 200, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #256AC8;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #b0bec5;
+            font-size: 0.9rem;
+        }
+
+        .dashboard-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #256AC8, #FFB800);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .dashboard-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 106, 200, 0.3);
+        }
+
+        footer {
+            background: #0a0f14;
+            color: #e1e5e9;
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #256AC8;
+        }
+
+        .footer-section p, .footer-section span {
+            color: #b0bec5;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #e1e5e9;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
+            }
+
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #256AC8, #FFB800);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(37, 106, 200, 0.3);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 106, 200, 0.4);
+        }
+
+        /* Circuit board animation */
+        .circuit-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(90deg, rgba(37, 106, 200, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(37, 106, 200, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: circuitMove 30s linear infinite;
+        }
+
+        @keyframes circuitMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+    </style>
 </head>
 <body>
-    <h1>
-        Insurance Verification AI Dataset
-        <div class="toggle-container">
-            Dark Mode
-            <label class="switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider"></span>
-            </label>
-        </div>
-    </h1>
-    
-    <p>Template repository for synthetic insurance call data to train AI agents.</p>
-    
-    <a href="https://github.com/JSoul13/insurance-verification-ai" class="button">View on GitHub</a>
-    
-    <div class="grid">
-        <div class="card">
-            <h2>Dataset Statistics</h2>
-            <div class="chart-container">
-                <canvas id="dataChart"></canvas>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>Intent Distribution</h2>
-            <div class="chart-container">
-                <canvas id="intentChart"></canvas>
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        <h2>Repository Structure</h2>
-        <div class="file-structure">
-            insurance-verification-ai/<br>
-            ├── <strong>data/</strong><br>
-            │   ├── raw_transcripts.json<br>
-            │   └── labeled_intents_entities.json<br>
-            ├── <strong>scripts/</strong><br>
-            │   └── load_data.py<br>
-            └── README.md
-        </div>
-    </div>
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <div class="logo-image"></div>
+                <a href="#" class="logo-text">JI INNOVATIONS</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#ai-agents">AI Agents</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-    <div class="card">
-        <h2>Submit New Data</h2>
-        <form id="dataForm">
-            <label for="caller">Caller Type:</label>
-            <select id="caller" required>
-                <option value="Provider">Provider</option>
-                <option value="Patient">Patient</option>
-                <option value="Biller">Biller</option>
-            </select>
-            
-            <label for="transcript">Call Transcript:</label>
-            <textarea id="transcript" rows="3" required></textarea>
-            
-            <label for="response">Insurer Response:</label>
-            <textarea id="response" rows="3" required></textarea>
-            
-            <label for="intent">Primary Intent:</label>
-            <input type="text" id="intent" required>
-            
-            <button type="submit">Add to Dataset</button>
-        </form>
-    </div>
-    
-    <div class="card">
-        <h2>Sample Data Files</h2>
-        
-        <h3>1. Raw Call Transcripts (data/raw_transcripts.json)</h3>
-        <pre><code>[
-  {
-    "caller": "Provider",
-    "transcript": "Hi, I'm calling to verify benefits for patient John Doe, DOB 01/01/1990.",
-    "insurer_response": "Coverage is active. Deductible $500 with $200 met."
-  }
-]</code></pre>
-        
-        <h3>2. Labeled NLP Data (data/labeled_intents_entities.json)</h3>
-        <pre><code>[
-  {
-    "text": "Coverage is active. Deductible $500 with $200 met.",
-    "intent": "verify_benefits",
-    "entities": [
-      {"entity": "@coverage_status", "value": "active", "start": 0, "end": 6},
-      {"entity": "@deductible_total", "value": "$500", "start": 25, "end": 29}
-    ]
-  }
-]</code></pre>
-    </div>
+    <section id="home" class="hero">
+        <div class="circuit-bg"></div>
+        <div class="container hero-content">
+            <h1>Custom AI Agents for Healthcare & Beyond</h1>
+            <p>Revolutionizing enterprise operations with intelligent, autonomous digital workers that adapt, learn, and deliver exceptional results 24/7.</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
 
-    <div class="card">
-        <h2>Getting Started</h2>
-        <h3>Clone the Repository</h3>
-        <pre><code>git clone https://github.com/JSoul13/insurance-verification-ai.git
-cd insurance-verification-ai</code></pre>
-        
-        <h3>Run the Sample Script</h3>
-        <pre><code>python scripts/load_data.py</code></pre>
-        <p>Output should show: <code>First example: Coverage is active...</code></p>
-    </div>
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Our Specialized Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Healthcare AI Agents</h3>
+                    <p>Custom AI agents for patient management, appointment scheduling, medical record processing, and clinical decision support. Enhance patient care while reducing administrative burden.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Enterprise Automation</h3>
+                    <p>Deploy intelligent agents across finance, HR, IT operations, and customer service. Automate complex workflows with agents that learn and adapt to your business needs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>System Integration</h3>
+                    <p>Seamlessly integrate AI agents with your existing CRM, ERP, and business-critical applications. Ensure smooth data flow and operational continuity.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Analytics & Insights</h3>
+                    <p>Leverage AI agents for real-time data analysis, predictive maintenance, and intelligent business intelligence that responds to natural language queries.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Security & Compliance</h3>
+                    <p>AI agents with built-in security protocols for HIPAA, GDPR, and industry-specific compliance. Automated threat detection and response capabilities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored AI agent development for your unique business challenges. From concept to deployment, we create agents that perfectly fit your operational needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // Dark Mode Toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        darkModeToggle.addEventListener('change', function() {
-            document.body.classList.toggle('dark-mode', this.checked);
-            localStorage.setItem('darkMode', this.checked);
-        });
-        
-        // Check for saved user preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            darkModeToggle.checked = true;
-        }
-        
-        // Sample Charts
-        const dataCtx = document.getElementById('dataChart').getContext('2d');
-        const intentCtx = document.getElementById('intentChart').getContext('2d');
-        
-        new Chart(dataCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Call Transcripts', 'Labeled Intents', 'Entities'],
-                datasets: [{
-                    label: 'Dataset Items',
-                    data: [42, 35, 128],
-                    backgroundColor: [
-                        'rgba(52, 152, 219, 0.7)',
-                        'rgba(155, 89, 182, 0.7)',
-                        'rgba(46, 204, 113, 0.7)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-        
-        new Chart(intentCtx, {
-            type: 'pie',
-            data: {
-                labels: ['Verify Benefits', 'Check Deductible', 'Request Auth', 'Denial Handling'],
-                datasets: [{
-                    data: [45, 25, 20, 10],
-                    backgroundColor: [
-                        'rgba(52, 152, 219, 0.7)',
-                        'rgba(241, 196, 15, 0.7)',
-                        'rgba(46, 204, 113, 0.7)',
-                        'rgba(231, 76, 60, 0.7)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false
-            }
-        });
-        
-        // Form Submission
-        document.getElementById('dataForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const newEntry = {
-                caller: document.getElementById('caller').value,
-                transcript: document.getElementById('transcript').value,
-                response: document.getElementById('response').value,
-                intent: document.getElementById('intent').value
-            };
-            
-            alert(`New entry added:\n\nCaller: ${newEntry.caller}\nIntent: ${newEntry.intent}\n\n(Note: This demo would connect to your backend in production)`);
-            this.reset();
-        });
-    </script>
-</body>
-</html>
+    <section id="ai-agents" class="ai-agents-info">
+        <div class="container">
+            <h2 style="color: white;">What Are AI Agents?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; position: relative; z-index: 2;">
+                AI Agents are intelligent, autonomous digital workers that operate within business processes to complete tasks, make decisions, and adapt to changing conditions—all without human intervention.
+            </p>
+            
+            <div class="ai-info-grid">
+                <div class="ai-info-card">
+                    <h3>🧠 Intelligent Decision Making</h3>
+                    <p>Unlike traditional automation, AI agents understand context, analyze data in real-time, and make intelligent decisions based on current conditions and historical trends.</p>
+                </div>
+                <div class="ai-info-card">
+                    <h3>🔄 Continuous Learning</h3>
+                    <p>AI agents learn from every interaction, continuously improving their accuracy and effectiveness. They adapt to changing business conditions without manual updates.</p>
+                </div>
+                <div class="ai-info-card">
+                    <h3>🌐 Multi-System Integration</h3>
+                    <p>Seamlessly work across multiple business systems, from CRMs to ERP platforms, creating unified workflows that span entire organizations.</p>
+                </div>
+                <div class="ai-info-card">
+                    <h3>🎯 Autonomous Operation</h3>
+                    <p>Handle end-to-end workflows independently, from simple task automation to complex process orchestration across departments.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center; position: relative; z-index: 2;">
+                <h3 style="margin-bottom: 2rem;">Key Capabilities</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h4 style="color: #256AC8; margin-bottom: 1rem;">Natural Language Processing</h4>
+                        <p>Understand and respond to human language with sentiment analysis</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #FFB800; margin-bottom: 1rem;">24/7 Availability</h4>
+                        <p>Round-the-clock operation without breaks or downtime</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #256AC8; margin-bottom: 1rem;">Scalable Performance</h4>
+                        <p>Handle thousands of tasks simultaneously without additional resources</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #FFB800; margin-bottom: 1rem;">Predictive Analytics</h4>
+                        <p>Anticipate needs and proactively address potential issues</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2>AI Dashboard Overview</h2>
+            <div class="dashboard-preview">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">98.7%</div>
+                        <div class="stat-label">Agent Uptime</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15.2K</div>
+                        <div class="stat-label">Tasks Automated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">42%</div>
+                        <div class="stat-label">Cost Reduction</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Active Monitoring</div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; color: #b0bec5; margin-bottom: 2rem;">
+                    Monitor your AI agents in real-time with comprehensive analytics, performance metrics, and operational insights. 
+                    Track efficiency gains, cost savings, and system health from a unified dashboard interface.
+                </p>
+                
+                <div style="text-align: center;">
+                    <a href="https://jidash.abacusai.app/" target="_blank" class="dashboard-link">
+                        Access Live Dashboard →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Why Choose JI Innovations?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Healthcare Expertise</h3>
+                    <p>Deep understanding of healthcare workflows, compliance requirements, and patient care optimization.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Rapid Deployment</h3>
+                    <p>Quick implementation with minimal disruption to your existing operations and systems.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Security First</h3>
+                    <p>Enterprise-grade security with compliance for HIPAA, GDPR, and other regulatory requirements.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <h3>Proven ROI</h3>
+                    <p>Deliver measurable results with 20-30% productivity increases and significant cost reductions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background: #1a2734;">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #b0bec5;">
+                    Let's discuss how custom AI agents can revolutionize your healthcare operations and drive unprecedented efficiency.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div style="background: rgba(37, 106, 200, 0.1); padding: 2rem; border-radius: 12px; border: 1px solid rgba(37, 106, 200, 0.2);">
+                        <h4 style="color: #256AC8; margin-bottom: 1rem;">📧 Email</h4>
+                        <p>info@jiinnovations.com</p>
+                    </div>
+                    <div style="background: rgba(255, 184, 0, 0.1); padding: 2rem; border-radius: 12px; border: 1px solid rgba(255, 184, 0, 0.2);">
+                        <h4 style="color: #FFB800; margin-bottom: 1rem;">📞 Phone</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div style="background: rgba(37, 106, 200, 0.1); padding: 2rem; border-radius: 12px; border: 1px solid rgba(37, 106, 200, 0.2);">
+                        <h4 style="color: #256AC8; margin-bottom: 1rem;">🏢 Office</h4>
+                        <p>Healthcare Innovation District<br>Your City, State 12345</p>
+                    </div>
+                </div>
+                <a href="mailto:info@jiinnovations.com" class="cta-button" style="margin-top: 2rem;">Schedule a Consultation</a>
+            </div>
+        </div>
